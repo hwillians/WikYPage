@@ -1,0 +1,13 @@
+﻿@model  IEnumerable<WikY.Models.Article>
+@{
+    ViewBag.Title = "Nos Articles";
+}
+
+<h2>Nos Articles</h2>
+
+@foreach (var article in Model)
+{
+    @Html.Partial("_Article", article)
+
+}
+

@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using WikY.Models;
 
 namespace WikY.Controllers
 {
@@ -10,14 +11,19 @@ namespace WikY.Controllers
 	{
 		public ActionResult Index()
 		{
-			return View();
+			WikYPageContext context = new WikYPageContext();
+			Article art = context.Articles.OrderByDescending(x => x.DateCreation)
+			  .FirstOrDefault(); ;
+
+			return View(art);
 		}
 
-		public ActionResult About()
+		public ActionResult GetArticles()
 		{
-			ViewBag.Message = "Your application description page.";
+			WikYPageContext context = new WikYPageContext();
+			var articles = context.Articles;
 
-			return View();
+			return View(articles);
 		}
 
 		public ActionResult Contact()
