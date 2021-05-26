@@ -1,0 +1,24 @@
+﻿@model WikY.Models.Article
+@{
+    ViewBag.Title = "AddArticle";
+}
+
+<h2>Ajouter un article</h2>
+
+@using (Html.BeginForm())
+{
+    <div>
+        @Html.LabelFor(a => a.Auteur)
+        @Html.EditorFor(a => a.Auteur)
+    </div>
+    <div>
+        @Html.LabelFor(a => a.Theme)
+        @Html.EditorFor(a => a.Theme)
+    </div>
+    <div>
+        @Html.LabelFor(a => a.Contenu)
+        @Html.EditorFor(a => a.Contenu)
+    </div>
+    <input type="submit" value="Valider" />
+}
+

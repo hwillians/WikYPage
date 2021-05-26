@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
 
 namespace WikY.Models
@@ -20,7 +21,8 @@ namespace WikY.Models
 		public DateTime DateCreation { get; set; } = DateTime.Now;
 		
 		[Required]
-		[MaxLength(3000)]
+		[DataType(DataType.MultilineText)]
+		[DisplayName("Contenu de l'article")]
 		public string Contenu { get; set; }
 		public virtual List<Commentaire> Commentaires { get; set; }
 	}

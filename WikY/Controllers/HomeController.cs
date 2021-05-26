@@ -26,11 +26,17 @@ namespace WikY.Controllers
 			return View(articles);
 		}
 
-		public ActionResult Contact()
+		public ActionResult AddArticle()
 		{
-			ViewBag.Message = "Your contact page.";
-
 			return View();
+		}
+		[HttpPost]
+		public ActionResult AddArticle(Article article)
+		{
+			WikYPageContext context = new WikYPageContext();
+			context.Articles.Add(article);
+			context.SaveChanges();
+			return RedirectToAction("GetArticles");
 		}
 	}
 }

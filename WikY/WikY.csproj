@@ -140,6 +140,10 @@
     <Compile Include="Migrations\202105261429468_migration-tables2.Designer.cs">
       <DependentUpon>202105261429468_migration-tables2.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202105261538332_migration-lenCoontenu.cs" />
+    <Compile Include="Migrations\202105261538332_migration-lenCoontenu.Designer.cs">
+      <DependentUpon>202105261538332_migration-lenCoontenu.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Article.cs" />
     <Compile Include="Models\Commentaire.cs" />
@@ -168,6 +172,8 @@
     <Content Include="Scripts\jquery.validate.unobtrusive.js" />
     <Content Include="Scripts\jquery.validate.unobtrusive.min.js" />
     <Content Include="Scripts\modernizr-2.8.3.js" />
+    <Content Include="Scripts\popper.js" />
+    <Content Include="Scripts\popper.min.js" />
     <Content Include="Web.config" />
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
@@ -179,11 +185,10 @@
     <Content Include="Views\_ViewStart.cshtml" />
     <Content Include="Views\Shared\Error.cshtml" />
     <Content Include="Views\Shared\_Layout.cshtml" />
-    <Content Include="Views\Home\About.cshtml" />
-    <Content Include="Views\Home\Contact.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Views\Shared\_Article.cshtml" />
     <Content Include="Views\Home\GetArticles.cshtml" />
+    <Content Include="Views\Home\AddArticle.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -207,6 +212,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202105261429468_migration-tables2.resx">
       <DependentUpon>202105261429468_migration-tables2.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202105261538332_migration-lenCoontenu.resx">
+      <DependentUpon>202105261538332_migration-lenCoontenu.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
