@@ -9,6 +9,10 @@
 
 <p>@Model.Contenu</p>
 
-@Html.ActionLink("Modifier l'article", "Details", "Article", new { id = Model.Id }, new { @class = "btn btn-primary" })
+@Html.ActionLink("Modifier l'article", "Edit", "Article", new { id = Model.Id }, new { @class = "btn btn-primary" })
 
-@Html.ActionLink("Supprimer l'article", "Details", "Article", new { id = Model.Id }, new { @class = "btn btn-danger" })
+@Html.ActionLink("Supprimer l'article", "Delete", "Article", new { id = Model.Id }, new { @class = "btn btn-danger" })
+
+
+
+

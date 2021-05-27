@@ -56,7 +56,10 @@ namespace WikY.Controllers
 		// GET: Arcticle/Edit/5
 		public ActionResult Edit(int id)
 		{
-			return View();
+			WikYPageContext context = new WikYPageContext();
+			var article = context.Articles.Find(id);
+			return View(article);
+
 		}
 
 		// POST: Arcticle/Edit/5
@@ -64,8 +67,12 @@ namespace WikY.Controllers
 		public ActionResult Edit(int id, Article article)
 		{
 			WikYPageContext context = new WikYPageContext();
-			article = context.Articles.FirstOrDefault(a => a.Id == id);
-			return View(article);
+			var oldArticle = context.Articles.Find(id);
+			oldArticle.Auteur = article.Auteur;
+			oldArticle.Contenu = article.Contenu;
+			oldArticle.Theme = article.Theme;
+			context.SaveChanges();
+			return RedirectToAction("Details", new { id });
 		}
 
 		// GET: Arcticle/Delete/5
@@ -78,16 +85,11 @@ namespace WikY.Controllers
 		[HttpPost]
 		public ActionResult Delete(int id, Article article)
 		{
-			try
-			{
-				// TODO: Add delete logic here
-
-				return RedirectToAction("Index");
-			}
-			catch
-			{
-				return View();
-			}
+			WikYPageContext context = new WikYPageContext();
+			var articleToRemove = context.Articles.Find(id);
+			context.Articles.Remove(articleToRemove);
+			context.SaveChanges();
+			return RedirectToAction("GetArticles");
 		}
 	}
 }

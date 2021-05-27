@@ -230,6 +230,8 @@
     <Content Include="Views\Home\Contact.cshtml" />
     <Content Include="Views\Article\Details.cshtml" />
     <Content Include="Views\Article\Edit.cshtml" />
+    <Content Include="Views\Shared\_FormArticle.cshtml" />
+    <Content Include="Views\Article\Delete.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
