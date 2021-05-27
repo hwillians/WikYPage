@@ -1,0 +1,18 @@
+﻿@model WikY.Models.Article
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>@Model.Theme</h2>
+<h3>Crée par : @Model.Auteur </h3>
+<p>Editer le @Model.DateCreation</p>
+
+<p>@Model.Contenu</p>
+
+@Html.ActionLink("Modifier l'article", "Edit", "Article", new { id = Model.Id }, new { @class = "btn btn-primary" })
+
+@Html.ActionLink("Supprimer l'article", "Delete", "Article", new { id = Model.Id }, new { @class = "btn btn-danger" })
+
+
+
+

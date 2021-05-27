@@ -1,0 +1,11 @@
+﻿@model  WikY.Models.Article
+@{
+    ViewBag.Title = "Home Page";
+}
+
+<div class="jumbotron">
+    <h1>WikY</h1>
+    <p class="lead"><strong>WikY</strong> est un wiki en ligne permettant d'ajouter des articles sur des thèmes variés</p>
+</div>
+
+@Html.Partial("_Article", Model)
