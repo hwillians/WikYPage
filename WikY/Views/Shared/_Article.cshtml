@@ -2,14 +2,18 @@
 
 <div class="card">
     <div class="card-header">
-        <p>Theme : <strong>@Model.Theme</strong> </p> 
+        <p>Theme : <strong>@Model.Theme</strong> </p>
     </div>
     <div class="card-body">
         <h5 class="card-title">Auteur : @Model.Auteur</h5>
         <blockquote class="blockquote mb-0">
-            <p class="card-text">@Model.Contenu</p> 
+            <p class="card-text">@Model.Contenu.Substring(1, Model.Contenu.Length < 300 ? Model.Contenu.Length-1 : 300)</p>
             <footer class="blockquote-footer">  @Model.DateCreation</footer>
         </blockquote>
+   
+    </div>
+    <div class="card-footer ">
+        <a href="#" class="btn btn-primary">Detaille de l'article</a>
     </div>
 </div>
 

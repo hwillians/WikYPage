@@ -11,32 +11,21 @@ namespace WikY.Controllers
 	{
 		public ActionResult Index()
 		{
-			WikYPageContext context = new WikYPageContext();
-			Article art = context.Articles.OrderByDescending(x => x.DateCreation)
-			  .FirstOrDefault(); ;
-
-			return View(art);
+			return RedirectToAction("../Article/Index");
 		}
 
-		public ActionResult GetArticles()
+		public ActionResult About()
 		{
-			WikYPageContext context = new WikYPageContext();
-			var articles = context.Articles;
+			ViewBag.Message = "Your application description page.";
 
-			return View(articles);
-		}
-
-		public ActionResult AddArticle()
-		{
 			return View();
 		}
-		[HttpPost]
-		public ActionResult AddArticle(Article article)
+
+		public ActionResult Contact()
 		{
-			WikYPageContext context = new WikYPageContext();
-			context.Articles.Add(article);
-			context.SaveChanges();
-			return RedirectToAction("GetArticles");
+			ViewBag.Message = "Your contact page.";
+
+			return View();
 		}
 	}
 }
