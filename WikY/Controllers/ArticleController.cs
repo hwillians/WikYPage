@@ -28,7 +28,9 @@ namespace WikY.Controllers
 		// GET: Arcticle/Details/5
 		public ActionResult Details(int id)
 		{
-			return View();
+			WikYPageContext context = new WikYPageContext();
+			Article art = context.Articles.FirstOrDefault(a => a.Id == id);
+			return View(art);
 		}
 
 		// GET: Arcticle/Create
@@ -61,16 +63,9 @@ namespace WikY.Controllers
 		[HttpPost]
 		public ActionResult Edit(int id, Article article)
 		{
-			try
-			{
-	
-
-				return RedirectToAction("Index");
-			}
-			catch
-			{
-				return View();
-			}
+			WikYPageContext context = new WikYPageContext();
+			article = context.Articles.FirstOrDefault(a => a.Id == id);
+			return View(article);
 		}
 
 		// GET: Arcticle/Delete/5
