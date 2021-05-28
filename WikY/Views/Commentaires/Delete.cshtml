@@ -1,0 +1,20 @@
+﻿@model WikY.Models.Commentaire
+
+<h3 class="text-danger">
+    Vous êtes sur le point de supprimer ce commentaire, êtes vous sur de vouloir continuer ?
+</h3>
+
+@Model.Auteur
+@Model.Contenu
+@Model.DateCreation
+
+
+
+@using (Html.BeginForm())
+{
+    @Html.HiddenFor(c=>c.ArticleId)
+    @Html.AntiForgeryToken()
+    <input type="submit" value="Oui" class="btn btn-danger" />
+    @Html.ActionLink("Non", "Details", "Article", new { id = Model.ArticleId }, new { @class = "btn btn-primary" })
+}
+

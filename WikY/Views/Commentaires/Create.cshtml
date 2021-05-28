@@ -1,0 +1,30 @@
+﻿@model WikY.Models.Commentaire
+@{
+    ViewBag.Title = "Create";
+    var artId = (int)ViewBag.articleId;
+}
+<h2>Create</h2>
+
+<div class="container">
+
+    @using (Html.BeginForm())
+    {
+        @Html.Hidden("ArticleId", artId)
+
+        @Model
+        <div>
+            @Html.LabelFor(c => c.Auteur, null, new { @class = "form-label" })
+            @Html.EditorFor(c => c.Auteur)
+            @Html.ValidationMessageFor(c => c.Auteur, null, new { @class = "text-danger" })
+        </div>
+        <div>
+            @Html.LabelFor(c => c.Contenu, null, new { @class = "form-label" })
+            <div>
+                @Html.EditorFor(c => c.Contenu, new { htmlAttributes = new { rows = "15", value = "text" } })
+            </div>
+
+            @Html.ValidationMessageFor(c => c.Contenu, null, new { @class = "text-danger" })
+        </div>
+        <input type="submit" value="Valider" />
+    }
+</div>

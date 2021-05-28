@@ -13,6 +13,23 @@
 
 @Html.ActionLink("Supprimer l'article", "Delete", "Article", new { id = Model.Id }, new { @class = "btn btn-danger" })
 
+@Html.ActionLink("Ajouter un commentaire", "Create", "Commentaires", new { idArticle = Model.Id }, new { @class = "btn btn-danger" })
 
-
+<ul class="list-group">
+    @foreach (var commentaire in Model.Commentaires)
+    {
+        <li class="list-group-item">
+            <div class="card">
+                <div class="card-header">
+                    @commentaire.Auteur
+                </div>
+                <div class="card-body">
+                    @commentaire.Contenu
+                    <p class="font-weight-light">@commentaire.DateCreation</p>
+                    @Html.ActionLink("Supprimer", "Delete", "Commentaires", new { id = commentaire.Id }, new { @class = "btn btn-danger" })
+                </div>
+            </div>
+        </li>
+    }
+</ul>
 

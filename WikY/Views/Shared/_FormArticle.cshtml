@@ -5,6 +5,9 @@
 
     @using (Html.BeginForm())
     {
+    <div hidden>
+        @Html.AntiForgeryToken()
+        </div>
         <div>
             @Html.LabelFor(a => a.Auteur, null, new { @class = "form-label" })
             @Html.EditorFor(a => a.Auteur)

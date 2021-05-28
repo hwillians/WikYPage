@@ -126,6 +126,7 @@
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Controllers\ArticleController.cs" />
+    <Compile Include="Controllers\CommentairesController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -141,6 +142,30 @@
     <Compile Include="Migrations\202105261538332_migration-lenCoontenu.cs" />
     <Compile Include="Migrations\202105261538332_migration-lenCoontenu.Designer.cs">
       <DependentUpon>202105261538332_migration-lenCoontenu.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202105271509095_new.cs" />
+    <Compile Include="Migrations\202105271509095_new.Designer.cs">
+      <DependentUpon>202105271509095_new.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202105271512225_new5.cs" />
+    <Compile Include="Migrations\202105271512225_new5.Designer.cs">
+      <DependentUpon>202105271512225_new5.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202105271515519_new4.cs" />
+    <Compile Include="Migrations\202105271515519_new4.Designer.cs">
+      <DependentUpon>202105271515519_new4.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202105271656588_new110.cs" />
+    <Compile Include="Migrations\202105271656588_new110.Designer.cs">
+      <DependentUpon>202105271656588_new110.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202105271700493_new11.cs" />
+    <Compile Include="Migrations\202105271700493_new11.Designer.cs">
+      <DependentUpon>202105271700493_new11.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202105271801154_new13.cs" />
+    <Compile Include="Migrations\202105271801154_new13.Designer.cs">
+      <DependentUpon>202105271801154_new13.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Article.cs" />
@@ -232,6 +257,9 @@
     <Content Include="Views\Article\Edit.cshtml" />
     <Content Include="Views\Shared\_FormArticle.cshtml" />
     <Content Include="Views\Article\Delete.cshtml" />
+    <Content Include="Views\Commentaires\Create.cshtml" />
+    <Content Include="Views\Shared\_CommentaireForm.cshtml" />
+    <Content Include="Views\Commentaires\Delete.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -248,6 +276,24 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202105261538332_migration-lenCoontenu.resx">
       <DependentUpon>202105261538332_migration-lenCoontenu.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202105271509095_new.resx">
+      <DependentUpon>202105271509095_new.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202105271512225_new5.resx">
+      <DependentUpon>202105271512225_new5.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202105271515519_new4.resx">
+      <DependentUpon>202105271515519_new4.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202105271656588_new110.resx">
+      <DependentUpon>202105271656588_new110.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202105271700493_new11.resx">
+      <DependentUpon>202105271700493_new11.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202105271801154_new13.resx">
+      <DependentUpon>202105271801154_new13.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

@@ -1,9 +1,10 @@
 ﻿<h3 class="text-danger">
-    Vous êtes sur le poiint de supprimer l'article, êtes vous sur de vouloir continuer ?
+    Vous êtes sur le point de supprimer l'article, êtes vous sur de vouloir continuer ?
 </h3>
 
 @using (Html.BeginForm())
 {
+    @Html.AntiForgeryToken()
     <input type="submit" value="Oui" class="btn btn-danger" />
     @Html.ActionLink("Non", "GetArticles", "Article", null, new { @class = "btn btn-primary" })
 }

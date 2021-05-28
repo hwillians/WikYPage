@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace WikY.Models
 {
@@ -9,6 +10,7 @@ namespace WikY.Models
 	{
 		public int Id { get; set; }
 
+		[Index(IsUnique = true)]
 		[DisplayName("Thème")]
 		[Required(ErrorMessage ="Le theme est obligatoire")]
 		[StringLength(30, ErrorMessage = "Longueur Max=200")]
@@ -27,5 +29,10 @@ namespace WikY.Models
 		[DisplayName("Contenu de l'article")]
 		public string Contenu { get; set; }
 		public virtual List<Commentaire> Commentaires { get; set; }
+
+		public override string ToString()
+		{
+			return $" {Id} - {Theme} - {Auteur} ";
+		}
 	}
 }
