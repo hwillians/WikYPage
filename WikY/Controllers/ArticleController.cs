@@ -10,8 +10,8 @@ namespace WikY.Controllers
 		public ActionResult Index()
 		{
 			WikYPageContext context = new WikYPageContext();
-			Article art = context.Articles.OrderByDescending(x => x.DateCreation)
-			  .FirstOrDefault();
+			Article art = context.Articles.OrderByDescending(x => x.DateCreation).FirstOrDefault();
+			
 			return View(art);
 		}
 
@@ -29,6 +29,7 @@ namespace WikY.Controllers
 		{
 			WikYPageContext context = new WikYPageContext();
 			Article art = context.Articles.FirstOrDefault(a => a.Id == id);
+			
 			return View(art);
 		}
 
@@ -36,6 +37,7 @@ namespace WikY.Controllers
 		public ActionResult Create()
 		{
 			ViewBag.isUnique = true;
+			
 			return View();
 		}
 
@@ -46,6 +48,7 @@ namespace WikY.Controllers
 		{
 			WikYPageContext context = new WikYPageContext();
 			ViewBag.isUnique = !context.Articles.Any(a => a.Theme == article.Theme);
+			
 			if (ModelState.IsValid && ViewBag.isUnique)
 			{
 				context.Articles.Add(article);
@@ -61,6 +64,7 @@ namespace WikY.Controllers
 			WikYPageContext context = new WikYPageContext();
 			var article = context.Articles.Find(id);
 			ViewBag.isUnique = true;
+			
 			return View(article);
 		}
 
@@ -71,6 +75,7 @@ namespace WikY.Controllers
 		{
 			WikYPageContext context = new WikYPageContext();
 			ViewBag.isUnique = !context.Articles.Any(a => a.Theme == article.Theme && a.Id != article.Id);
+			
 			if (ModelState.IsValid && ViewBag.isUnique)
 			{
 				var oldArticle = context.Articles.Find(id);
@@ -102,6 +107,7 @@ namespace WikY.Controllers
 			var articleToRemove = context.Articles.Find(id);
 			context.Articles.Remove(articleToRemove);
 			context.SaveChanges();
+			
 			return RedirectToAction("GetArticles");
 		}
 	}

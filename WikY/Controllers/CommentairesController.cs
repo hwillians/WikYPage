@@ -24,8 +24,7 @@ namespace WikY.Controllers
 		// GET: Commentaires/Create
 		public ActionResult Create(int idArticle)
 		{
-			WikYPageContext context = new WikYPageContext();
-			ViewBag.articleId = context.Articles.Find(idArticle).Id;
+			
 			return View();
 		}
 
@@ -38,10 +37,8 @@ namespace WikY.Controllers
 				WikYPageContext context = new WikYPageContext();
 				context.Commentaires.Add(commentaire);
 				context.SaveChanges();
-				return RedirectToAction("Details", "Article",new { id = commentaire.ArticleId });
 			}
-			else return View();
-
+			 return RedirectToAction("Details", "Article", new { id = commentaire.ArticleId });
 		}
 
 		// GET: Commentaires/Delete/5

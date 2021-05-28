@@ -1,10 +1,9 @@
-﻿@model WikY.Models.Commentaire
+﻿
+@model WikY.Models.Commentaire
 
-@using (Html.BeginForm())
+@using (Html.BeginForm("Create", "Commentaires", FormMethod.Post))
 {
-    @Html.Hidden("ArticleId", artId)
-
-    @Model
+    @Html.HiddenFor(c => c.ArticleId)
     <div>
         @Html.LabelFor(c => c.Auteur, null, new { @class = "form-label" })
         @Html.EditorFor(c => c.Auteur)
@@ -13,10 +12,9 @@
     <div>
         @Html.LabelFor(c => c.Contenu, null, new { @class = "form-label" })
         <div>
-            @Html.EditorFor(c => c.Contenu, new { htmlAttributes = new { rows = "15", value = "text" } })
+            @Html.EditorFor(c => c.Contenu, new { htmlAttributes = new { rows = "4", value = "text" } })
+            @Html.ValidationMessageFor(c => c.Contenu, null, new { @class = "text-danger" })
         </div>
-
-        @Html.ValidationMessageFor(c => c.Contenu, null, new { @class = "text-danger" })
     </div>
-    <input type="submit" value="Valider" />
+    <button type="submit" class="btn btn-primary">Envoyer</button>
 }

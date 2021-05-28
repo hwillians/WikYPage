@@ -15,6 +15,15 @@
 
 @Html.ActionLink("Ajouter un commentaire", "Create", "Commentaires", new { idArticle = Model.Id }, new { @class = "btn btn-danger" })
 
+<div class="card m-2">
+    <div class="card-body">
+        <h5 class="card-title">
+            Ajouter un commentaire
+        </h5>
+        @Html.Partial("_CommentaireForm", new WikY.Models.Commentaire() { ArticleId = Model.Id })
+    </div>
+</div>
+
 <ul class="list-group">
     @foreach (var commentaire in Model.Commentaires)
     {
