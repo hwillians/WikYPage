@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
-using System.Web.Mvc;
+﻿using System.Web.Mvc;
 using WikY.Models;
 
 namespace WikY.Controllers
@@ -22,10 +18,9 @@ namespace WikY.Controllers
 		}
 
 		// GET: Commentaires/Create
-		public ActionResult Create(int idArticle)
+		public ActionResult Create()
 		{
-			
-			return View();
+			return PartialView("_CommentaireForm", new Commentaire());
 		}
 
 		// POST: Commentaires/Create
@@ -38,7 +33,7 @@ namespace WikY.Controllers
 				context.Commentaires.Add(commentaire);
 				context.SaveChanges();
 			}
-			 return RedirectToAction("Details", "Article", new { id = commentaire.ArticleId });
+			return PartialView("_CommentaireForm", new Commentaire());
 		}
 
 		// GET: Commentaires/Delete/5

@@ -1,7 +1,6 @@
-﻿
-@model WikY.Models.Commentaire
+﻿@model WikY.Models.Commentaire
 
-@using (Html.BeginForm("Create", "Commentaires", FormMethod.Post))
+@using (Html.BeginForm(null,null, FormMethod.Post, new { id = "myForm" }))
 {
     @Html.HiddenFor(c => c.ArticleId)
     <div>
@@ -16,5 +15,6 @@
             @Html.ValidationMessageFor(c => c.Contenu, null, new { @class = "text-danger" })
         </div>
     </div>
-    <button type="submit" class="btn btn-primary">Envoyer</button>
+    <button type="submit" class="btn btn-primary" id="addComm">Envoyer</button>
 }
+

@@ -13,14 +13,16 @@
 
 @Html.ActionLink("Supprimer l'article", "Delete", "Article", new { id = Model.Id }, new { @class = "btn btn-danger" })
 
-@Html.ActionLink("Ajouter un commentaire", "Create", "Commentaires", new { idArticle = Model.Id }, new { @class = "btn btn-danger" })
+<button onclick="add(1, 2)">hey</button>
 
 <div class="card m-2">
     <div class="card-body">
         <h5 class="card-title">
-            Ajouter un commentaire
+            Ajouter un commentaire (vue partiel)
         </h5>
-        @Html.Partial("_CommentaireForm", new WikY.Models.Commentaire() { ArticleId = Model.Id })
+        <div id="CommentaireZone">
+            @Html.Partial("_CommentaireForm", new WikY.Models.Commentaire() { ArticleId = Model.Id })
+        </div>
     </div>
 </div>
 
@@ -42,3 +44,17 @@
     }
 </ul>
 
+@section scripts{
+    <script>
+        $('#myForm').submit(function (e) {
+            e.preventDefault();
+            $.post('/Commentaires/Create', {
+                ArticleId: $('#ArticleId').val(),
+                Auteur: $('#Auteur').val(),
+                Contenu: $('#Contenu').val()
+            }, function (data) {
+                $('#CommentaireZone').html(data);
+            })
+        })
+    </script>
+}
