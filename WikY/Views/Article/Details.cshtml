@@ -13,6 +13,66 @@
 
 @Html.ActionLink("Supprimer l'article", "Delete", "Article", new { id = Model.Id }, new { @class = "btn btn-danger" })
 
+@Html.ActionLink("Ajouter un commentaire", "Create", "Commentaires", new { idArticle = Model.Id }, new { @class = "btn btn-info" })
 
 
+<div class="row">
+    <div class="col">
+        <div class="card m-2">
+            <div class="card-body">
+                <h5 class="card-title">
+                    Ajouter un commentaire (Formulaire)
+                </h5>
+                <div id="CommentaireFormulaire">
+                    <form action="/Commentaires/Create" id="myFormNonPartiel" method="post">
+                        <input id="ArticleIdFormulaire" name="ArticleIdFormulaire" type="hidden" value=@Model.Id />    <div>
+                            <label class="form-label" for="AuteurFormulaire">Auteur</label>
+                            <input class="text-box" id="AuteurFormulaire" name="AuteurFormulaire" type="text" />
+                            <span class="field-validation-valid text-danger" data-valmsg-for="Auteur" data-valmsg-replace="true"></span>
+                        </div>
+                        <div>
+                            <label class="form-label" for="ContenuFormulaire">Contenu</label>
+                            <div>
+                                <textarea class="text-box multi-line" id="ContenuFormulaire" name="ContenuFormulaire" rows="4" value="text"></textarea>
+                                <span class="field-validation-valid text-danger" data-valmsg-for="Contenu" data-valmsg-replace="true"></span>
+                            </div>
+                        </div>
+                        <button type="submit" class="btn btn-primary">Envoyer</button>
+                    </form>
 
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col">
+        <div class="card m-2">
+            <div class="card-body">
+                <h5 class="card-title">
+                    Ajouter un commentaire (vue partiel)
+                </h5>
+                <div id="CommentaireZone">
+                    @Html.Partial("_CommentaireForm", new WikY.Models.Commentaire() { ArticleId = Model.Id })
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div id="commentaires">
+    @Html.Partial("_ZoneCommentaires", Model.Commentaires)
+</div>
+
+@section scripts{
+    <script>
+        $('#myForm').submit(function (e) {
+            e.preventDefault();
+            $.post('/Commentaires/CreatePartial/@Model.Id', {
+                ArticleId: $('#ArticleId').val(),
+                Auteur: $('#Auteur').val(),
+                Contenu: $('#Contenu').val()
+            }, function (data) {
+                $('#commentaires').html(data);
+            })
+        })
+    </script>
+}

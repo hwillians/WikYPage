@@ -1,0 +1,20 @@
+﻿@model WikY.Models.Commentaire
+
+@using (Html.BeginForm("Create", "Commentaires", FormMethod.Post, new { id = "myForm" }))
+{
+    @Html.HiddenFor(c => c.ArticleId)
+    <div>
+        @Html.LabelFor(c => c.Auteur, null, new { @class = "form-label" })
+        @Html.EditorFor(c => c.Auteur)
+        @Html.ValidationMessageFor(c => c.Auteur, null, new { @class = "text-danger" })
+    </div>
+    <div>
+        @Html.LabelFor(c => c.Contenu, null, new { @class = "form-label" })
+        <div>
+            @Html.EditorFor(c => c.Contenu, new { htmlAttributes = new { rows = "4", value = "text" } })
+            @Html.ValidationMessageFor(c => c.Contenu, null, new { @class = "text-danger" })
+        </div>
+    </div>
+    <button type="submit" class="btn btn-primary" id="addComm">Envoyer</button>
+}
+
