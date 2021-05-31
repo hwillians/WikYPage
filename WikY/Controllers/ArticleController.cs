@@ -6,16 +6,16 @@ namespace WikY.Controllers
 {
 	public class ArticleController : Controller
 	{
-		// GET: Arcticle
+		// GET: Article
 		public ActionResult Index()
 		{
 			WikYPageContext context = new WikYPageContext();
 			Article art = context.Articles.OrderByDescending(x => x.DateCreation).FirstOrDefault();
-			
+
 			return View(art);
 		}
 
-		// GET: All Arcticles
+		// GET: All Articles
 		public ActionResult GetArticles()
 		{
 			WikYPageContext context = new WikYPageContext();
@@ -24,32 +24,30 @@ namespace WikY.Controllers
 			return View(articles);
 		}
 
-		// GET: Arcticle/Details/5
+		// GET: Article/Details/5
 		public ActionResult Details(int id)
 		{
 			WikYPageContext context = new WikYPageContext();
 			Article art = context.Articles.FirstOrDefault(a => a.Id == id);
-			
+
 			return View(art);
 		}
 
-		// GET: Arcticle/Create
+		// GET: Article/Create
 		public ActionResult Create()
 		{
 			ViewBag.isUnique = true;
-			
+
 			return View();
 		}
 
-		// POST: Arcticle/Create
+		// POST: Article/Create
 		[HttpPost]
 		[ValidateAntiForgeryToken]
 		public ActionResult Create(Article article)
 		{
 			WikYPageContext context = new WikYPageContext();
-			ViewBag.isUnique = !context.Articles.Any(a => a.Theme == article.Theme);
-			
-			if (ModelState.IsValid && ViewBag.isUnique)
+			if (ModelState.IsValid)
 			{
 				context.Articles.Add(article);
 				context.SaveChanges();
@@ -58,25 +56,21 @@ namespace WikY.Controllers
 			else return View();
 		}
 
-		// GET: Arcticle/Edit/5
+		// GET: Article/Edit/5
 		public ActionResult Edit(int id)
 		{
 			WikYPageContext context = new WikYPageContext();
 			var article = context.Articles.Find(id);
-			ViewBag.isUnique = true;
-			
 			return View(article);
 		}
 
-		// POST: Arcticle/Edit/5
+		// POST: Article/Edit/5
 		[HttpPost]
 		[ValidateAntiForgeryToken]
 		public ActionResult Edit(int id, Article article)
 		{
 			WikYPageContext context = new WikYPageContext();
-			ViewBag.isUnique = !context.Articles.Any(a => a.Theme == article.Theme && a.Id != article.Id);
-			
-			if (ModelState.IsValid && ViewBag.isUnique)
+			if (ModelState.IsValid)
 			{
 				var oldArticle = context.Articles.Find(id);
 				oldArticle.Auteur = article.Auteur;
@@ -88,13 +82,13 @@ namespace WikY.Controllers
 			else return View();
 		}
 
-		// GET: Arcticle/Delete/5
+		// GET: Article/Delete/5
 		public ActionResult Delete(int id)
 		{
 			return View();
 		}
 
-		// POST: Arcticle/Delete/5
+		// POST: Article/Delete/5
 		[HttpPost]
 		[ValidateAntiForgeryToken]
 		public ActionResult Delete(int id, Article article)
@@ -107,8 +101,17 @@ namespace WikY.Controllers
 			var articleToRemove = context.Articles.Find(id);
 			context.Articles.Remove(articleToRemove);
 			context.SaveChanges();
-			
+
 			return RedirectToAction("GetArticles");
+		}
+
+
+		public ActionResult ThemeIsUnique(string theme, int? Id)
+		{
+			WikYPageContext context = new WikYPageContext();
+			bool resp = !context.Articles.Any(a => (Id == 0 ? a.Theme == theme && a.Id != Id : a.Theme == theme));
+
+			return Json(resp, JsonRequestBehavior.AllowGet);
 		}
 	}
 }

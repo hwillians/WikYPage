@@ -167,6 +167,14 @@
     <Compile Include="Migrations\202105271801154_new13.Designer.cs">
       <DependentUpon>202105271801154_new13.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202105311118233_theme.cs" />
+    <Compile Include="Migrations\202105311118233_theme.Designer.cs">
+      <DependentUpon>202105311118233_theme.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202105311145265_theme unique.cs" />
+    <Compile Include="Migrations\202105311145265_theme unique.Designer.cs">
+      <DependentUpon>202105311145265_theme unique.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Article.cs" />
     <Compile Include="Models\Commentaire.cs" />
@@ -261,6 +269,8 @@
     <Content Include="Views\Shared\_CommentaireForm.cshtml" />
     <Content Include="Views\Commentaires\Delete.cshtml" />
     <Content Include="Views\Shared\_ZoneCommentaires.cshtml" />
+    <Content Include="Views\Shared\_DetailArticle.cshtml" />
+    <Content Include="Views\Home\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -295,6 +305,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202105271801154_new13.resx">
       <DependentUpon>202105271801154_new13.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202105311118233_theme.resx">
+      <DependentUpon>202105311118233_theme.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202105311145265_theme unique.resx">
+      <DependentUpon>202105311145265_theme unique.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
