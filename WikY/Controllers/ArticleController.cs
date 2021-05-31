@@ -109,7 +109,8 @@ namespace WikY.Controllers
 		public ActionResult ThemeIsUnique(string theme, int? Id)
 		{
 			WikYPageContext context = new WikYPageContext();
-			bool resp = !context.Articles.Any(a => (Id == 0 ? a.Theme == theme && a.Id != Id : a.Theme == theme));
+			bool resp = !context.Articles.Any(a =>
+			(Id == 0 ? a.Theme == theme : a.Theme == theme && a.Id != Id));
 
 			return Json(resp, JsonRequestBehavior.AllowGet);
 		}
