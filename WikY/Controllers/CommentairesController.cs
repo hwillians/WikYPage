@@ -6,19 +6,7 @@ namespace WikY.Controllers
 {
 	public class CommentairesController : Controller
 	{
-		// GET: Commentaires
-		public ActionResult Index()
-		{
-			return View();
-		}
-
-		// GET: Commentaires/Details/5
-		public ActionResult Details(int id)
-		{
-			return View();
-		}
-
-		// GET: Commentaires/Create
+				// GET: Commentaires/Create
 		public ActionResult Create(int idArticle)
 		{
 			WikYPageContext context = new WikYPageContext();

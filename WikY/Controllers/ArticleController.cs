@@ -96,7 +96,8 @@ namespace WikY.Controllers
 			WikYPageContext context = new WikYPageContext();
 
 			var commentaires = context.Commentaires.Where(c => c.ArticleId == article.Id);
-			foreach (var c in commentaires) context.Commentaires.Remove(context.Commentaires.Find(c.Id));
+			foreach (var c in commentaires)
+				context.Commentaires.Remove(context.Commentaires.Find(c.Id));
 
 			var articleToRemove = context.Articles.Find(id);
 			context.Articles.Remove(articleToRemove);
@@ -104,7 +105,6 @@ namespace WikY.Controllers
 
 			return RedirectToAction("GetArticles");
 		}
-
 
 		public ActionResult ThemeIsUnique(string theme, int? Id)
 		{

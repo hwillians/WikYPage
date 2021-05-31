@@ -1,57 +1,26 @@
 ﻿@model WikY.Models.Article
 
-<h2>@Model.Theme</h2>
-<h3>Crée par : @Model.Auteur </h3>
-<p>Editer le @Model.DateCreation</p>
-
-<p>@Model.Contenu</p>
-
-@Html.ActionLink("Modifier l'article", "Edit", "Article", new { id = Model.Id }, new { @class = "btn btn-primary" })
-
-@Html.ActionLink("Supprimer l'article", "Delete", "Article", new { id = Model.Id }, new { @class = "btn btn-danger" })
-
-@Html.ActionLink("Ajouter un commentaire", "Create", "Commentaires", new { idArticle = Model.Id }, new { @class = "btn btn-info" })
-
-
-<div class="row">
-    <div class="col">
-        <div class="card m-2">
-            <div class="card-body">
-                <h5 class="card-title">
-                    Ajouter un commentaire (Formulaire)
-                </h5>
-                <div id="CommentaireFormulaire">
-                    <form action="/Commentaires/Create" id="myFormNonPartiel" method="post">
-                        <input id="ArticleIdFormulaire" name="ArticleIdFormulaire" type="hidden" value=@Model.Id />    <div>
-                            <label class="form-label" for="AuteurFormulaire">Auteur</label>
-                            <input class="text-box" id="AuteurFormulaire" name="AuteurFormulaire" type="text" />
-                            <span class="field-validation-valid text-danger" data-valmsg-for="Auteur" data-valmsg-replace="true"></span>
-                        </div>
-                        <div>
-                            <label class="form-label" for="ContenuFormulaire">Contenu</label>
-                            <div>
-                                <textarea class="text-box multi-line" id="ContenuFormulaire" name="ContenuFormulaire" rows="4" value="text"></textarea>
-                                <span class="field-validation-valid text-danger" data-valmsg-for="Contenu" data-valmsg-replace="true"></span>
-                            </div>
-                        </div>
-                        <button type="submit" class="btn btn-primary">Envoyer</button>
-                    </form>
-
-                </div>
-            </div>
-        </div>
+<div class="card">
+    <div class="card-header">
+        <h4>@Model.Theme</h4>
     </div>
-    <div class="col">
-        <div class="card m-2">
-            <div class="card-body">
-                <h5 class="card-title">
-                    Ajouter un commentaire (vue partiel)
-                </h5>
-                <div id="CommentaireZone">
-                    @Html.Partial("_CommentaireForm", new WikY.Models.Commentaire() { ArticleId = Model.Id })
-                </div>
-            </div>
-        </div>
+    <div class="card-body">
+        <h5 class="card-title">Crée par : @Model.Auteur </h5>
+        <blockquote class="blockquote mb-0">
+            <p>@Model.Contenu</p>
+            <footer class="blockquote-footer">Crée le @Model.DateCreation</footer>
+        </blockquote>
+    </div>
+    <div class="card-footer">
+        @Html.ActionLink("Modifier l'article", "Edit", "Article", new { id = Model.Id }, new { @class = "btn btn-primary" })
+        @Html.ActionLink("Supprimer l'article", "Delete", "Article", new { id = Model.Id }, new { @class = "btn btn-danger" })
+    </div>
+</div>
+
+<div class="card m-2">
+    <h5 class="card-title"> Ajouter un commentaire</h5>
+    <div class="card-body" id="CommentaireZone">
+        @Html.Partial("_CommentaireForm", new WikY.Models.Commentaire() { ArticleId = Model.Id })
     </div>
 </div>
 

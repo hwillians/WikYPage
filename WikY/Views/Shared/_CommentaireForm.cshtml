@@ -3,17 +3,15 @@
 @using (Html.BeginForm("Create", "Commentaires", FormMethod.Post, new { id = "myForm" }))
 {
     @Html.HiddenFor(c => c.ArticleId)
-    <div>
-        @Html.LabelFor(c => c.Auteur, null, new { @class = "form-label" })
-        @Html.EditorFor(c => c.Auteur)
-        @Html.ValidationMessageFor(c => c.Auteur, null, new { @class = "text-danger" })
-    </div>
-    <div>
-        @Html.LabelFor(c => c.Contenu, null, new { @class = "form-label" })
-        <div>
-            @Html.EditorFor(c => c.Contenu, new { htmlAttributes = new { rows = "4", value = "text" } })
-            @Html.ValidationMessageFor(c => c.Contenu, null, new { @class = "text-danger" })
-        </div>
+<div class="row g-3 align-items-center mb-3">
+  
+    <div class="col-auto">@Html.LabelFor(c => c.Auteur, null, new { @class = "form-label" })</div>
+    <div class="col-auto">@Html.EditorFor(c => c.Auteur)</div>
+    <div class="col-auto"> @Html.ValidationMessageFor(c => c.Auteur, null, new { @class = "text-danger" })</div>
+</div>
+    <div class="mb-3">
+        @Html.ValidationMessageFor(c => c.Contenu, null, new { @class = "text-danger" })
+        @Html.TextAreaFor(c => c.Contenu, new { @class = "form-control", @placeholder = "Contenu du commentaire", @rows = 3 })
     </div>
     <button type="submit" class="btn btn-primary" id="addComm">Envoyer</button>
 }
