@@ -1,4 +1,5 @@
-﻿using System.Web.Mvc;
+﻿using System.Linq;
+using System.Web.Mvc;
 using WikY.Models;
 
 namespace WikY.Controllers
@@ -18,9 +19,12 @@ namespace WikY.Controllers
 		}
 
 		// GET: Commentaires/Create
-		public ActionResult Create()
+		public ActionResult Create(int idArticle)
 		{
-			return PartialView("_CommentaireForm", new Commentaire());
+			WikYPageContext context = new WikYPageContext();
+			ViewBag.articleId = context.Articles.Find(idArticle).Id;
+
+			return View();
 		}
 
 		// POST: Commentaires/Create
@@ -33,7 +37,31 @@ namespace WikY.Controllers
 				context.Commentaires.Add(commentaire);
 				context.SaveChanges();
 			}
-			return PartialView("_CommentaireForm", new Commentaire());
+			return RedirectToAction("Details", "Article", new { id = commentaire.ArticleId });
+		}
+
+		// GET: Commentaires/Create
+		public ActionResult CreatePartial(int idArticle)
+		{
+			WikYPageContext context = new WikYPageContext();
+			var article = context.Articles.Find(idArticle);
+			ViewBag.articleId = context.Articles.Find(idArticle).Id;
+
+			return PartialView("_ZoneCommentaires", article.Commentaires);
+		}
+
+		// POST: Commentaires/Create
+		[HttpPost]
+		public ActionResult CreatePartial(int articleId, Commentaire commentaire)
+		{
+			WikYPageContext context = new WikYPageContext();
+			if (ModelState.IsValid)
+			{
+				context.Commentaires.Add(commentaire);
+				context.SaveChanges();
+			}
+			var commentaires = context.Commentaires.Where(c => c.ArticleId == articleId);
+			return PartialView("_ZoneCommentaires", commentaires);
 		}
 
 		// GET: Commentaires/Delete/5

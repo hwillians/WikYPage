@@ -1,6 +1,6 @@
 ﻿@model WikY.Models.Commentaire
 
-@using (Html.BeginForm(null,null, FormMethod.Post, new { id = "myForm" }))
+@using (Html.BeginForm("Create", "Commentaires", FormMethod.Post, new { id = "myForm" }))
 {
     @Html.HiddenFor(c => c.ArticleId)
     <div>

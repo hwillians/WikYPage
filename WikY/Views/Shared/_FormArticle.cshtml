@@ -21,7 +21,7 @@
         <div>
             @Html.LabelFor(a => a.Contenu, null, new { @class = "form-label" })
             <div>
-                @Html.EditorFor(a => a.Contenu, new { htmlAttributes = new { rows = "15" ,value="text" } })
+                @Html.EditorFor(a => a.Contenu, new { htmlAttributes = new { rows = "6" ,value="text" } })
             </div>
 
             @Html.ValidationMessageFor(a => a.Contenu, null, new { @class = "text-danger" })

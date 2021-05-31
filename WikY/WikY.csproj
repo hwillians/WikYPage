@@ -260,6 +260,7 @@
     <Content Include="Views\Commentaires\Create.cshtml" />
     <Content Include="Views\Shared\_CommentaireForm.cshtml" />
     <Content Include="Views\Commentaires\Delete.cshtml" />
+    <Content Include="Views\Shared\_ZoneCommentaires.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
