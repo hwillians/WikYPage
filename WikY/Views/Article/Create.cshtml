@@ -4,7 +4,6 @@
 }
 
 <h2>Ajouter un article</h2>
-@if (!@ViewBag.isUnique)
-{<div class="text-danger">Le theme doit être unique</div>}
+
 @Html.Partial("_FormArticle", Model)
 
