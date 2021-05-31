@@ -28,12 +28,20 @@
                         @Html.ActionLink("Ajouter Article", "Create", "Article", null, new { @class = "nav-link " })
                     </li>
                     <li class="nav-item">
+                        @Html.ActionLink("Chercher parmis les Articles", "Search", "Article", null, new { @class = "nav-link " })
+                    </li>
+                    <li class="nav-item">
                         @Html.ActionLink("A propos", "About", "Home", null, new { @class = "nav-link " })
                     </li>
                     <li class="nav-item">
                         @Html.ActionLink("Contact", "Contact", "Home", null, new { @class = "nav-link " })
                     </li>
                 </ul>
+                @using (Html.BeginForm("Search", "Article", FormMethod.Post, new { @class = "d-flex" }))
+                {
+                    <input class="form-control me-2" id="motCherche" name="motCherche" type="search" placeholder="Search" aria-label="Search">
+                    <button class="btn btn-outline-success" type="submit">Search</button>
+                }
             </div>
         </div>
     </nav>

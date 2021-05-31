@@ -1,4 +1,5 @@
-﻿using System.Linq;
+﻿using System.Collections.Generic;
+using System.Linq;
 using System.Web.Mvc;
 using WikY.Models;
 
@@ -113,6 +114,19 @@ namespace WikY.Controllers
 			(Id == 0 ? a.Theme == theme : a.Theme == theme && a.Id != Id));
 
 			return Json(resp, JsonRequestBehavior.AllowGet);
+		}
+
+		public ActionResult Search()
+		{
+			return View(new List<Article>());
+		}
+
+		[HttpPost]
+		public ActionResult Search(string motCherche)
+		{
+			WikYPageContext context = new WikYPageContext();
+			var articles = context.Articles.Where(a => a.Auteur.Contains(motCherche) || a.Theme.Contains(motCherche) || a.Contenu.Contains(motCherche));
+			return View(articles);
 		}
 	}
 }
