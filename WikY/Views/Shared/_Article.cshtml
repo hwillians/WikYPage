@@ -7,7 +7,7 @@
     <div class="card-body">
         <h5 class="card-title">Auteur : @Model.Auteur</h5>
         <blockquote class="blockquote mb-1">
-            <p class="card-text">@Model.Contenu.Substring(0, Model.Contenu.Length < 300 ? Model.Contenu.Length : 300)  @Html.ActionLink("more...", "Details", "Article", new { id = Model.Id }, new { })</p>
+            <p class="card-text">@Model.Contenu.Substring(0, Model.Contenu.Length < 300 ? Model.Contenu.Length : 300)  @Html.ActionLink("more...", "Details", "Article", new { id = Model.Id }, new { @class = "btn btn-link" })</p>
             <footer class="blockquote-footer">  @Model.DateCreation</footer>
         </blockquote>
     </div>
