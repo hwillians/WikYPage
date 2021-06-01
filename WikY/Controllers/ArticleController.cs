@@ -86,7 +86,9 @@ namespace WikY.Controllers
 		// GET: Article/Delete/5
 		public ActionResult Delete(int id)
 		{
-			return View();
+			WikYPageContext context = new WikYPageContext();
+			var articleToRemove = context.Articles.Find(id);
+			return View(articleToRemove);
 		}
 
 		// POST: Article/Delete/5

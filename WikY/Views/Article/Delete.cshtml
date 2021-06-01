@@ -1,11 +1,25 @@
 ﻿@model WikY.Models.Article
+
 @{
-    ViewBag.Title = "WikY - Suppression " +Model.Theme;
+    ViewBag.Title = "WikY - Suppression " + @Model.Theme;
 }
 
-<h3 class="text-danger">
+<div class="card">
+    <div class="card-header">
+        <p>Theme : <strong>@Model.Theme</strong> </p>
+    </div>
+    <div class="card-body">
+        <h5 class="card-title">Auteur : @Model.Auteur</h5>
+        <blockquote class="blockquote mb-0">
+            <p class="card-text">@Model.Contenu.Substring(0, Model.Contenu.Length < 300 ? Model.Contenu.Length : 300)</p>
+            <footer class="blockquote-footer">  @Model.DateCreation</footer>
+        </blockquote>
+    </div>
+</div>
+
+<h5 class="text-danger">
     Vous êtes sur le point de supprimer l'article, êtes vous sur de vouloir continuer ?
-</h3>
+</h5>
 
 @using (Html.BeginForm())
 {
